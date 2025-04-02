@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shahed Adnan - Game Developer</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Animation and Highlighting Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Initialize code highlighting -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            hljs.highlightAll();
+            
+            // Handle code tabs
+            document.querySelectorAll('.code-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const detailsEl = this.closest('details');
+                    detailsEl.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
+                    detailsEl.querySelectorAll('.code-panel').forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+                    const targetId = this.getAttribute('data-target');
+                    detailsEl.querySelector(`#${targetId}`).classList.add('active');
+                });
+            });
+            
+            // Smooth opening/closing for details elements
+            document.querySelectorAll('details').forEach(detail => {
+                const content = detail.querySelector('.details-content');
+                if (content) {
+                    detail.addEventListener('toggle', () => {
+                        if (detail.open) {
+                            content.style.maxHeight = content.scrollHeight + 'px';
+                            content.style.opacity = '1';
+                            
+                            // Scroll into view after opening
+                            setTimeout(() => {
+                                const headerHeight = document.querySelector('header').offsetHeight;
+                                const detailsTop = detail.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                                window.scrollTo({
+                                    top: detailsTop,
+                                    behavior: 'smooth'
+                                });
+                            }, 100);
+                        } else {
+                            content.style.maxHeight = '0';
+                            content.style.opacity = '0';
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    
+    <!-- Space animation styles -->
+    <style>
+        /* Customize scrollbar to match theme */
+        ::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+        
+        /* Smooth transitions for details elements */
+        details .details-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        
+        details[open] .details-content {
+            max-height: 2000px; /* Arbitrary large number */
+            opacity: 1;
+        }
+        
+        /* Make code snippet pre blocks properly sized with scrollbars */
+        .code-snippet pre {
+            margin: 0;
+        }
+        
+        .code-snippet code {
+            max-height: 400px;
+            overflow-y: auto;
+            display: block;
+        }
+        
+        /* Make gallery items in dropdowns more interactive */
+        .gallery-item {
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        /* Make sure Three.js container is properly set */
+        #three-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+    </style>
+    
+    <style>
+        /* Additional styles for code snippets and dropdowns */
+        details {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        summary {
+            padding: 1rem;
+            cursor: pointer;
+            position: relative;
+            font-weight: 600;
+            color: var(--secondary-color);
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(60, 145, 230, 0.2);
+            outline: none;
+        }
+        
+        summary:hover {
+            background-color: rgba(60, 145, 230, 0.1);
+        }
+        
+        summary::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 1rem;
+            transform: rotate(0);
+            transition: transform 0.3s ease;
+        }
+        
+        details[open] summary::after {
+            transform: rotate(180deg);
+        }
+        
+        .details-content {
+            padding: 1.5rem;
+        }
+        
+        .code-snippet {
+            background-color: #1e1e1e;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        
+        .hljs {
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+        
+        .code-description {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .external-code-link {
+            display: inline-flex;
+            align-items: center;
+            margin: 0.5rem 0;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .external-code-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .external-code-link:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        
+        .game-demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .game-feature {
+            background-color: rgba(15, 18, 24, 0.5);
+            border-radius: 5px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .gallery-item {
+            height: 200px;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img,
+        .gallery-item:hover video {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Simplified contact section */
+        .contact-info {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--card-bg);
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: var(--transition);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-link i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+        
+        .contact-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+            background-color: var(--secondary-color);
+        }
+        
+        .contact-link:hover i {
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#hero" class="logo">Shahed</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#code">Code</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <!-- Three.js will insert its renderer here -->
+        <div id="three-container"></div>
+        <div class="hero-content animate">
+            <img src="assets/profile.jpg" alt="Shahed Adnan" class="hero-img">
+            <h1 class="hero-title">Shahed Adnan</h1>
+            <p class="hero-subtitle">Game & Web Developer</p>
+            <p class="hero-description">
+                Passionate game and web developer. 
+                Game development experience in Unreal Engine, using C++ and blueprints.
+                Also a Software Engineering student at Per Scholas, currently learning web development using Javacript and the MERN stack.
+            </p>
+            <div>
+                <a href="#projects" class="btn">View My Work</a>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/shahed154" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/shahed6804/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:shahed6804@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+   <!-- Projects Section -->
+<section id="projects">
+    <div class="container">
+        <h2 class="animate">My Projects</h2>
+        
+        <!-- Game Development Projects -->
+        <h3 class="section-subtitle animate">Game Development</h3>
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card animate">
+                <img src="assets/cops-zombies.jpg" alt="Cops N' Zombies" class="project-img">
+                <div class="project-content">
+                    <h3 class="project-title">Cops N' Zombies</h3>
+                    <p class="project-description">
+                        A multiplayer horror social deduction game where one player is secretly a zombie. Utilized Adv
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Unreal Engine</span>
+                        <span class="project-tag">C++</span>
+                        <span class="project-tag">Multiplayer</span>
+                        <span class="project-tag">Horror</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://store.steampowered.com/app/2066000/Cops_N_Zombies/" target="_blank" class="project-demo">View on Steam</a>
+                    </div>
+                    
+                    <!-- Project Details (Dropdown) -->
+                    <details class="project-details">
+                        <summary>Project Details</summary>
+                        <div class="details-content">
+                            <div class="game-feature">
+                                <div class="feature-title">Game Overview</div>
+                                <p>Cops N' Zombies is a multiplayer horror social deduction game designed for 4-10 players. One player is randomly selected to be a zombie, whose goal is to kill all police officers. The police must find guns to defend themselves, but must be cautious as the zombie can transform at will.</p>
+                            </div>
+                            
+                            <div class="game-feature">
+                                <div class="feature-title">Key Features</div>
+                                <ul>
+                                    <li>Multiplayer support for 4-10 players</li>
+                                    <li>Horror atmosphere with dark environments and tension-building sound design</li>
+                                    <li>Social deduction gameplay with secret roles</li>
+                                    <li>Weapon system with multiple gun types</li>
+                                    <li>Proximity voice chat for immersive communication</li>
+                                    <li>Steam integration for matchmaking</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="game-feature">
+                                <div class="feature-title">Media Gallery</div>
+                                <div class="game-demo-grid">
+                                    <div class="gallery-item">
+                                        <img src="assets/cops1.jpg" alt="Cops N' Zombies Gameplay">
+                                        <div class="gallery-caption">Zombie attack sequence</div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="assets/cops2.jpg" alt="Cops N' Zombies Map">
+                                        <div class="gallery-caption">Dark hallway map design</div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="assets/cops3.jpg" alt="Cops N' Zombies Weapon">
+                                        <div class="gallery-caption">Weapon pickup interaction</div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="assets/cops4.jpg" alt="Cops N' Zombies Lobby">
+                                        <div class="gallery-caption">Multiplayer lobby system</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card animate">
+                <img src="assets/party-game.jpg" alt="Fighting Party Game" class="project-img">
+                <div class="project-content">
+                    <h3 class="project-title">Fighting/Party Mini Game</h3>
+                    <p class="project-description">
+                        A multiplayer party game where players control muscular animals in various minigames. Features boxing mechanics and different animations based on punch direction.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Unreal Engine</span>
+                        <span class="project-tag">Blueprint</span>
+                        <span class="project-tag">Animation</span>
+                        <span class="project-tag">Prototype</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-demo">View Demo</a>
+                    </div>
+                    
+                    <!-- Project Details (Dropdown) -->
+                    <details class="project-details">
+                        <summary>Project Details</summary>
+                        <div class="details-content">
+                            <div class="game-feature">
+                                <div class="feature-title">Game Overview</div>
+                                <p>A multiplayer party game featuring muscular animal characters competing in various minigames. Players can punch each other and participate in different modes to earn points and become the champion among their friends.</p>
+                            </div>
+                            
+                            <div class="game-feature">
+                                <div class="feature-title">Key Features</div>
+                                <ul>
+                                    <li>Unique muscular animal characters with customization options</li>
+                                    <li>Boxing system with different punch types and animations</li>
+                                    <li>Various minigames inspired by Mario Party</li>
+                                    <li>Stylized anime shader for visual appeal</li>
+                                    <li>Parkour system with double jumps and mantling</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="game-feature">
+                                <div class="feature-title">Media Gallery</div>
+                                <div class="game-demo-grid">
+                                    <div class="gallery-item">
+                                        <img src="assets/party1.jpg" alt="Party Game Gameplay">
+                                        <div class="gallery-caption">Boxing mechanics in action</div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="assets/party2.jpg" alt="Party Game Character">
+                                        <div class="gallery-caption">Character customization screen</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card animate">
+                <img src="assets/survival-game.jpg" alt="Survival Game" class="project-img">
+                <div class="project-content">
+                    <h3 class="project-title">Survival Game</h3>
+                    <p class="project-description">
+                        A fantasy multiplayer co-op survival game inspired by Ark Survival. Features crafting, building, weapon systems, and various AI behaviors.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Unreal Engine</span>
+                        <span class="project-tag">C++</span>
+                        <span class="project-tag">AI</span>
+                        <span class="project-tag">Prototype</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-demo">View Demo</a>
+                    </div>
+                    
+                    <!-- Project Details (Dropdown) -->
+                    <details class="project-details">
+                        <summary>Project Details</summary>
+                        <div class="details-content">
+                            <div class="game-feature">
+                                <div class="feature-title">Game Overview</div>
+                                <p>A fantasy multiplayer co-op survival game inspired by Ark Survival. Players must gather resources, craft items, and build structures while facing various AI-controlled threats in a dynamic open world.</p>
+                            </div>
+                            
+                            <div class="game-feature">
+                                <div class="feature-title">Key Features</div>
+                                <ul>
+                                    <li>Basic survival mechanics: health, hunger, thirst, and stamina</li>
+                                    <li>Resource gathering and destructible environments</li>
+                                    <li>Crafting system with multiple recipes</li>
+                                    <li>Building system similar to Ark Survival</li>
+                                    <li>Melee and ranged weapon systems</li>
+                                    <li>Various AI behaviors including roaming, patrolling, and boss encounters</li>
+                                    <li>Dynamic weather and day/night cycle</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="game-feature">
+                                <div class="feature-title">Media Gallery</div>
+                                <div class="game-demo-grid">
+                                    <div class="gallery-item">
+                                        <img src="assets/survival1.jpg" alt="Survival Game Gameplay">
+                                        <div class="gallery-caption">AI horde encounter</div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="assets/survival2.jpg" alt="Survival Game Building">
+                                        <div class="gallery-caption">Building system demonstration</div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="assets/survival3.jpg" alt="Survival Game Combat">
+                                        <div class="gallery-caption">Combat with monsters</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Web Development Projects -->
+        <h3 class="section-subtitle animate" style="margin-top: 4rem;">Web Development</h3>
+        <div class="projects-grid">
+            <!-- Web Project 1 - Portfolio Website -->
+            <div class="project-card animate">
+                <img src="assets/portfolio-website.jpg" alt="Portfolio Website" class="project-img">
+                <div class="project-content">
+                    <h3 class="project-title">Personal Portfolio Website</h3>
+                    <p class="project-description">
+                        A responsive portfolio website showcasing my game development and web development projects. Features interactive animations and dynamic content.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">HTML</span>
+                        <span class="project-tag">CSS</span>
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">Three.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-demo">Live Site</a>
+                        <a href="#" class="project-code">View Code</a>
+                    </div>
+                    
+                    <!-- Project Details (Dropdown) -->
+                    <details class="project-details">
+                        <summary>Project Details</summary>
+                        <div class="details-content">
+                            <div class="game-feature">
+                                <div class="feature-title">Project Overview</div>
+                                <p>A personal portfolio website built from scratch using modern web technologies. Features responsive design, interactive animations with Three.js, and showcases various projects.</p>
+                            </div>
+                            
+                            <div class="game-feature">
+                                <div class="feature-title">Key Features</div>
+                                <ul>
+                                    <li>Responsive design that works on all devices</li>
+                                    <li>Interactive 3D background animations using Three.js</li>
+                                    <li>Project showcases with detailed information</li>
+                                    <li>Code syntax highlighting for code examples</li>
+                                    <li>Optimized performance and accessibility</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+            
+            <!-- Web Project 2 - Pokemon Battle Simulator -->
+            <div class="project-card animate">
+                <img src="assets/pokemon-battle.jpg" alt="Pokemon Battle Simulator" class="project-img">
+                <div class="project-content">
+                    <h3 class="project-title">Pokemon Battle Simulator</h3>
+                    <p class="project-description">
+                        A Pokemon Battle Simulator using PokeAPI where players can roll random Pokemon and moves, then battle against a computer opponent to see whose move is more powerful.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">HTML</span>
+                        <span class="project-tag">CSS</span>
+                        <span class="project-tag">Axios</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://shahed154.github.io/SBA308A/" target="_blank" class="project-demo">Live Demo</a>
+                        <a href="https://github.com/shahed154/SBA308A" target="_blank" class="project-code">View Code</a>
+                    </div>
+                    
+                    <!-- Project Details (Dropdown) -->
+                    <details class="project-details">
+                        <summary>Project Details</summary>
+                        <div class="details-content">
+                            <div class="game-feature">
+                                <div class="feature-title">Project Overview</div>
+                                <p>A simple Pokemon Battle Simulator built with JavaScript that uses the PokeAPI to fetch random Pokemon and their moves. Players can roll random Pokemon and moves, then battle against a computer opponent to see whose move is more powerful.</p>
+                            </div>
+                            
+                            <div class="game-feature">
+                                <div class="feature-title">Key Features</div>
+                                <ul>
+                                    <li>Random Pokemon and move selection</li>
+                                    <li>API integration with PokeAPI</li>
+                                    <li>Battle system based on move power</li>
+                                    <li>Interactive battle log with animations</li>
+                                    <li>Modular JavaScript with ES6 modules</li>
+                                    <li>Asynchronous JavaScript (async/await, Promises)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="game-feature">
+                                <div class="feature-title">How To Play</div>
+                                <ul>
+                                    <li>Click "Roll Pokemon" to get a random Pokemon</li>
+                                    <li>When you have a Pokemon, click "Roll Move" to get a random attack</li>
+                                    <li>When you have the Pokemon and move you like, click "Start Battle" to battle</li>
+                                    <li>View the battle results in the battle log</li>
+                                    <li>Click "Reset Game" to start over</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Code Samples Section -->
+<section id="code" class="resume-section animate" style="margin-top: 4rem;">
+    <div class="container">
+        <h2 class="animate">Code Samples</h2>
+        
+        <!-- Game Development Code -->
+        <h3 class="section-subtitle animate">Game Development Code</h3>
+        
+        <!-- Multiplayer Interaction System -->
+        <details>
+            <summary>Multiplayer Interaction System (C++)</summary>
+            <div class="details-content">
+                <div class="code-description">
+                    This interaction system allows players to interact with various objects in the game world. It uses raycasting to detect interactable objects and supports multiplayer replication.
+                </div>
+                
+                <div class="code-snippet">
+                    <pre><code class="language-cpp">// Multiplayer Interaction System
+void ABaseCharacter::Interact()
+{
+    // Prevent interaction while dead
+    if (bIsDead) return;
+
+    // Check if we are looking at an interactable
+    if (CurrentInteractable != nullptr)
+    {
+        // Call the interact function on the interactable
+        IInteractableInterface::Execute_OnInteract(CurrentInteractable, this);
+        
+        // Play interaction animation
+        PlayAnimMontage(InteractionAnimMontage, 1.0f);
+        
+        // Replicate the interaction to all clients
+        Server_Interact(CurrentInteractable);
+    }
+}
+
+// Server implementation of interaction for multiplayer
+void ABaseCharacter::Server_Interact_Implementation(AActor* Interactable)
+{
+    // Server validation
+    if (Interactable && Interactable->Implements<UInteractableInterface>())
+    {
+        // Execute the interaction on the server
+        IInteractableInterface::Execute_OnInteract(Interactable, this);
+        
+        // Tell all clients about the interaction
+        Multi_PlayInteractAnim();
+    }
+}</code></pre>
+                </div>
+                
+                <div class="external-code-link">
+                    <a href="https://gist.github.com/shahed154/2d4fe4a6e9c11a91cac34157777d8a5d" target="_blank" class="external-code-link">
+                        <i class="fab fa-github"></i> View full code on GitHub Gist
+                    </a>
+                </div>
+            </div>
+        </details>
+        
+        <!-- Weapon System -->
+        <details>
+            <summary>Weapon System (C++ & Blueprint)</summary>
+            <div class="details-content">
+                <div class="code-description">
+                    A comprehensive weapon system that handles weapon pickups, firing mechanics, and ammo management. The system supports multiple weapon types and is fully networked for multiplayer gameplay.
+                </div>
+                
+                <div class="code-snippet">
+                    <pre><code class="language-cpp">// Weapon base class implementation
+AWeaponBase::AWeaponBase()
+{
+    // Set this actor to call Tick() every frame
+    PrimaryActorTick.bCanEverTick = true;
+    
+    // Create mesh component
+    WeaponMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WeaponMesh"));
+    RootComponent = WeaponMesh;
+    
+    // Set network replication
+    bReplicates = true;
+    WeaponMesh->SetIsReplicated(true);
+    
+    // Default weapon properties
+    MaxAmmo = 30;
+    CurrentAmmo = MaxAmmo;
+    FireRate = 0.1f;
+    bCanFire = true;
+    LastFireTime = 0.0f;
+}
+
+void AWeaponBase::Fire()
+{
+    // Check if we can fire
+    if (!bCanFire || CurrentAmmo <= 0) return;
+    
+    // Get player controller
+    AMyPlayerController* PC = Cast<AMyPlayerController>(GetOwner());
+    if (!PC) return;
+    
+    // Get camera direction
+    FVector CameraLocation;
+    FRotator CameraRotation;
+    PC->GetPlayerViewPoint(CameraLocation, CameraRotation);
+    
+    // Set trace parameters
+    FVector TraceStart = CameraLocation;
+    FVector TraceEnd = CameraLocation + (CameraRotation.Vector() * 10000.0f);
+    
+    // Perform trace
+    FHitResult HitResult;
+    FCollisionQueryParams QueryParams;
+    QueryParams.AddIgnoredActor(this);
+    QueryParams.AddIgnoredActor(GetOwner());
+    
+    // Process hit results
+    if (GetWorld()->LineTraceSingleByChannel(HitResult, TraceStart, TraceEnd, ECC_Visibility, QueryParams))
+    {
+        // Apply damage if we hit a damageable actor
+        AActor* HitActor = HitResult.GetActor();
+        if (HitActor && HitActor->Implements<UDamageableInterface>())
+        {
+            IDamageableInterface::Execute_TakeDamage(HitActor, WeaponDamage, HitResult.ImpactPoint, PC);
+        }
+        
+        // Spawn impact effects
+        SpawnImpactEffects(HitResult);
+    }
+    
+    // Spawn muzzle effects
+    SpawnMuzzleEffects();
+    
+    // Consume ammo
+    CurrentAmmo--;
+    
+    // Set fire timer
+    bCanFire = false;
+    LastFireTime = GetWorld()->GetTimeSeconds();
+    GetWorldTimerManager().SetTimer(FireTimerHandle, this, &AWeaponBase::ResetFireTimer, FireRate, false);
+    
+    // Replicate fire event
+    Server_Fire(TraceStart, TraceEnd);
+}</code></pre>
+                </div>
+                
+                <div class="external-code-link">
+                    <a href="https://blueprintue.com/blueprint/hh_luq0m/" target="_blank" class="external-code-link">
+                        <i class="fab fa-uncharted"></i> View Weapon Drop Blueprint
+                    </a>
+                </div>
+            </div>
+        </details>
+        
+        <!-- Player Health System -->
+        <details>
+            <summary>Player Health System (C++)</summary>
+            <div class="details-content">
+                <div class="code-description">
+                    A health and stamina system for player characters. Includes regeneration mechanics, sprint functionality, and damage handling.
+                </div>
+                
+                <div class="code-snippet">
+                    <pre><code class="language-cpp">// Health and Stamina system implementation
+void APlayerCharacter::SetupHealthSystem()
+{
+    // Initialize health and stamina
+    MaxHealth = 100.0f;
+    CurrentHealth = MaxHealth;
+    
+    MaxStamina = 100.0f;
+    CurrentStamina = MaxStamina;
+    
+    StaminaRegenRate = 10.0f;
+    StaminaSprintCost = 15.0f;
+    
+    bIsDead = false;
+    bIsRegeneratingStamina = true;
+    
+    // Set up replication
+    DOREPLIFETIME(APlayerCharacter, CurrentHealth);
+    DOREPLIFETIME(APlayerCharacter, bIsDead);
+}</code></pre>
+                </div>
+                
+                <div class="external-code-link">
+                    <a href="https://gist.github.com/shahed154/7ff9c0266f21809cb48b6ee0c057af14" target="_blank" class="external-code-link">
+                        <i class="fab fa-github"></i> View full code on GitHub Gist
+                    </a>
+                </div>
+            </div>
+        </details>
+        
+        <!-- Web Development Code -->
+        <h3 class="section-subtitle animate" style="margin-top: 3rem;">Web Development Code</h3>
+        
+        <!-- API Integration - Pokemon Battle Simulator -->
+        <details>
+            <summary>API Integration with PokeAPI (JavaScript)</summary>
+            <div class="details-content">
+                <div class="code-description">
+                    This code fetches random Pokemon and their moves from the PokeAPI. It showcases asynchronous JavaScript, API integration, and error handling.
+                </div>
+                
+                <div class="code-snippet">
+                    <pre><code class="language-javascript">const BASE_URL = 'https://pokeapi.co/api/v2';
+
+const getRandomPokemonId = () => Math.floor(Math.random() * 898) + 1;
+
+async function getRandomPokemon() {
+    try {
+        const id = getRandomPokemonId();
+        const response = await axios.get(`${BASE_URL}/pokemon/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error getting random pokemon:', error);
+        throw error;
+    }
+}
+
+async function getRandomMove(pokemon, maxAttempts) {
+    try {
+        maxAttempts = 10;
+        const allMoves = pokemon.moves;
+        
+        // Shuffle the moves array for randomness
+        const shuffledMoves = [...allMoves].sort(() => 0.5 - Math.random())
+        
+        const attempts = shuffledMoves.length;
+        
+        for (let i = 0; i < attempts; i++) {
+            const moveEntry = shuffledMoves[i]
+            const moveUrl = moveEntry.move.url;
+            
+            const response = await axios.get(moveUrl);
+            const moveData = response.data;
+            
+            // Only return moves that have power (for battle system)
+            if (moveData.power !== null && moveData.power > 0) {
+                return moveData;
+            }
+        }
+        
+        throw new Error(`No move with power found after ${attempts} attempts`);
+        
+    } catch (error) {
+        console.error('Error getting random move with power', error);
+        throw error;
+    }
+}</code></pre>
+                </div>
+                
+                <div class="external-code-link">
+                    <a href="https://github.com/shahed154/SBA308A/blob/main/js/api.js" target="_blank" class="external-code-link">
+                        <i class="fab fa-github"></i> View full code on GitHub
+                    </a>
+                </div>
+            </div>
+        </details>
+        
+        <!-- Battle System - Pokemon Battle Simulator -->
+        <details>
+            <summary>Battle System with Animation (JavaScript)</summary>
+            <div class="details-content">
+                <div class="code-description">
+                    This battle system determines the winner based on move power and displays the battle results with timed animations using setTimeout.
+                </div>
+                
+                <div class="code-snippet">
+                    <pre><code class="language-javascript">function battle(playerPokemon, playerMove, opponentPokemon, opponentMove) {
+    const battleLog = [];
+
+    battleLog.push(`${playerPokemon.name.toUpperCase()} VERSUS ${opponentPokemon.name.toUpperCase()}!`)
+    battleLog.push(`${playerPokemon.name.toUpperCase()} used ${playerMove.name.toUpperCase()} (Power: ${playerMove.power})`);
+    battleLog.push(`${opponentPokemon.name.toUpperCase()} used ${opponentMove.name.toUpperCase()} (Power: ${opponentMove.power})`);
+    
+    let winner;
+    let winnerDetails;
+
+    if (playerMove.power > opponentMove.power) {
+        winner = 'player';
+        winnerDetails = `${opponentPokemon.name.toUpperCase()} fainted! ${playerPokemon.name.toUpperCase()} with ${playerMove.name.toUpperCase()} Wins !  `;
+    } else if (opponentMove.power > playerMove.power) {
+        winner = 'opponent';
+        winnerDetails = `${playerPokemon.name.toUpperCase()} fainted! ${opponentPokemon.name.toUpperCase()} with ${opponentMove.name.toUpperCase()} win! `;
+    } else {
+        winner = 'tie';
+        winnerDetails = "Tied! THEY BOTH FAINTED";
+    }
+
+    battleLog.push(winnerDetails)
+
+    return {
+        winner: winner,
+        battleLog: battleLog
+    };
+}
+
+function displayBattleResults(battleLogElement, battleResults) {
+    document.getElementById('roll-pokemon').disabled = true;
+    document.getElementById('roll-move').disabled = true;
+    document.getElementById('reset-game').disabled = true;
+
+    battleLogElement.innerHTML = '<h3>Battle Results</h3>';
+    
+    // Display battle log entries with animation delay
+    battleResults.battleLog.forEach((entry, index) => {
+        setTimeout(() => {
+            const logEntry = document.createElement('p');
+            logEntry.textContent = entry;
+            battleLogElement.appendChild(logEntry);
+        }, index * 2500); 
+    });
+
+    // Re-enable reset button after battle animation finishes
+    setTimeout(() => {
+        document.getElementById('reset-game').disabled = false;
+    }, (battleResults.battleLog.length * 2500));
+}</code></pre>
+                </div>
+                
+                <div class="external-code-link">
+                    <a href="https://github.com/shahed154/SBA308A/blob/main/js/battle.js" target="_blank" class="external-code-link">
+                        <i class="fab fa-github"></i> View full code on GitHub
+                    </a>
+                </div>
+            </div>
+        </details>
+        
+        <!-- Main Application Logic - Pokemon Battle Simulator -->
+        <details>
+            <summary>Main Application Logic (JavaScript)</summary>
+            <div class="details-content">
+                <div class="code-description">
+                    This file contains the main application logic, implementing the game flow, event listeners, and state management for the Pokemon Battle Simulator.
+                </div>
+                
+                <div class="code-snippet">
+                    <pre><code class="language-javascript">import { getRandomPokemon, getRandomMove } from './api.js'
+import { displayPokemon, displayOpponentPokemon, displayMove } from './pokemon.js'
+import { battle, displayBattleResults } from './battle.js';
+
+const playerPokemonElement = document.getElementById('player-pokemon')
+const playerMoveElement = document.getElementById('player-move')
+const opponentPokemonElement = document.getElementById('opponent-pokemon')
+const opponentMoveElement = document.getElementById('opponent-move')
+const battleLogElement = document.getElementById('battle-log')
+const rollPokemonButton = document.getElementById('roll-pokemon')
+const rollMoveButton = document.getElementById('roll-move')
+const startBattleButton = document.getElementById('start-battle')
+const resetGameButton = document.getElementById('reset-game');
+
+// Game state
+let playerPokemon = null;
+let opponentPokemon = null;
+let playerMove = null;
+let opponentMove = null;
+let pokemonRollsLeft = 3
+let moveRollsLeft = 3
+
+// Initialize opponent on page load
+addEventListener("DOMContentLoaded", (event) => {
+    getRandomOpponentPokemon();
+});
+
+// Event listeners
+rollPokemonButton.addEventListener('click', rollPlayerPokemon);
+rollMoveButton.addEventListener('click', rollPlayerMove);
+startBattleButton.addEventListener('click', startBattle);
+resetGameButton.addEventListener('click', resetGame);
+
+async function rollPlayerPokemon() {
+    try {
+        const pokemon = await getRandomPokemon();
+        playerPokemon = pokemon;
+        
+        displayPokemon(playerPokemonElement, pokemon);
+      
+        pokemonRollsLeft--;
+        rollPokemonButton.textContent = `Roll Pokemon (${pokemonRollsLeft} left)`;
+        moveRollsLeft = 3;
+        
+        // Roll move automatically when getting a new Pokemon
+        rollPlayerMove();
+        
+        if (pokemonRollsLeft === 0) {
+            window.alert("Out of Rolls!! ");
+            rollPokemonButton.disabled = true;
+        }
+        
+        rollMoveButton.disabled = false;
+        
+    } catch (error) {
+        console.error('Error rolling Pokemon:', error);
+        playerPokemonElement.innerHTML = '<p>Error fetching Pokemon.</p>';
+    }
+}</code></pre>
+                </div>
+                
+                <div class="external-code-link">
+                    <a href="https://github.com/shahed154/SBA308A/blob/main/js/main.js" target="_blank" class="external-code-link">
+                        <i class="fab fa-github"></i> View full code on GitHub
+                    </a>
+                </div>
+            </div>
+        </details>
+    </div>
+</section>
+    <!-- Resume Section -->
+    <section id="resume">
+        <div class="container">
+            <h2 class="animate">Resume</h2>
+            <div class="resume-container">
+                <div class="animate">
+                    <div class="resume-section">
+                        <h3>Experience</h3>
+                        <div class="resume-item">
+                            <div class="resume-item-title">Game Developer (Independent)</div>
+                            <div class="resume-item-subtitle">Self-Employed</div>
+                            <div class="resume-item-date">2022 - Present</div>
+                            <p>
+                                Developing multiplayer games using Unreal Engine and C++. Designing and implementing 
+                                game systems, including multiplayer interactions, weapon systems, and character mechanics.
+                            </p>
+                        </div>
+                        <div class="resume-item">
+                            <div class="resume-item-title">Associate Banker</div>
+                            <div class="resume-item-subtitle">J.P. Morgan Chase & Co.</div>
+                            <div class="resume-item-date">May 2023 - January 2024</div>
+                            <p>
+                                Created new business opportunities by developing client relationships,
+                                processed complex banking transactions, and trained new bankers.
+                            </p>
+                        </div>
+                        <div class="resume-item">
+                            <div class="resume-item-title">Sales Associate</div>
+                            <div class="resume-item-subtitle">Deckers</div>
+                            <div class="resume-item-date">November 2022 - March 2023</div>
+                            <p>
+                                Led floor operations and managed inventory/shipping systems with 100% accuracy.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate">
+                    <div class="resume-section">
+                        <h3>Education</h3>
+                        <div class="resume-item">
+                            <div class="resume-item-title">Software Engineering</div>
+                            <div class="resume-item-subtitle">Per Scholas</div>
+                            <div class="resume-item-date">May 2025</div>
+                            <p>
+                                HTML, CSS, Javascript, MongoDB, React, Node.js, Express, Git
+                            </p>
+                        </div>
+                        <div class="resume-item">
+                            <div class="resume-item-title">Bachelor of Arts in History</div>
+                            <div class="resume-item-subtitle">Queens College</div>
+                            <div class="resume-item-date">January 2022</div>
+                            <p>
+                                Related Coursework: Corporate Finance, Economics, Computer Science, Business, Graphic Design
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="resume-section">
+                        <h3>Skills</h3>
+                        <div class="resume-skills">
+                            <span class="skill">C++</span>
+                            <span class="skill">Unreal Engine</span>
+                            <span class="skill">HTML</span>
+                            <span class="skill">CSS</span>
+                            <span class="skill">JavaScript</span>
+                            <span class="skill">NodeJS</span>
+                            <span class="skill">Express</span>
+                            <span class="skill">MongoDB</span>
+                            <span class="skill">React</span>
+                            <span class="skill">Git</span>
+                            <span class="skill">Microsoft Excel</span>
+                            <span class="skill">Adobe CC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resume-btn animate">
+                <a href="assets/Shahed_Adnan_Resume.pdf" class="btn" download>Download Full Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section (Simplified) -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="animate">Contact Me</h2>
+            <div class="contact-info animate">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <span>Queens, New York, United States</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <span>shahed6804@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <span>347-206-2340</span>
+                </div>
+                
+                <div class="contact-links">
+                    <a href="mailto:shahed6804@gmail.com" class="contact-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email Me</span>
+                    </a>
+                    <a href="https://github.com/shahed154" target="_blank" class="contact-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/shahed6804/" target="_blank" class="contact-link">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text"> Shahed Adnan. PortFolio Website.</p>
+        <div class="social-links">
+            <a href="https://github.com/shahed154" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/shahed6804/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:shahed6804@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/cpp.min.js"></script>
+    <script src="three-animation.js"></script> 
+
+    <script>
+        // Initialize code highlighting
+        document.addEventListener('DOMContentLoaded', () => {
+            hljs.highlightAll();
+        });
+        
+        // Initialize details elements
+        document.querySelectorAll('details').forEach(detail => {
+            detail.addEventListener('toggle', function() {
+                if (this.open) {
+                    // Re-highlight code when details is opened
+                    const codeBlocks = this.querySelectorAll('pre code');
+                    if (codeBlocks.length > 0) {
+                        codeBlocks.forEach(block => {
+                            hljs.highlightElement(block);
+                        });
+                    }
+                    
+                    // Scroll into view (with offset for header)
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const detailsTop = this.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                    window.scrollTo({
+                        top: detailsTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Handle anchor links to details elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const hash = window.location.hash;
+            if (hash) {
+                const targetDetails = document.querySelector(hash);
+                if (targetDetails && targetDetails.tagName === 'DETAILS') {
+                    targetDetails.open = true;
+                    
+                    // Scroll to the element (with delay to allow for rendering)
+                    setTimeout(() => {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const detailsTop = targetDetails.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                        window.scrollTo({
+                            top: detailsTop,
+                            behavior: 'smooth'
+                        });
+                    }, 100);
+                }
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                
+                // Check if it's a details element
+                const targetDetails = document.querySelector(targetId);
+                if (targetDetails && targetDetails.tagName === 'DETAILS') {
+                    e.preventDefault();
+                    targetDetails.open = true;
+                    
+                    // Scroll to the element (with delay to allow for rendering)
+                    setTimeout(() => {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const detailsTop = targetDetails.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                        window.scrollTo({
+                            top: detailsTop,
+                            behavior: 'smooth'
+                        });
+                    }, 100);
+                } else if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const elementTop = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                        window.scrollTo({
+                            top: elementTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.25,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.8s ease-in-out forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate').forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(15, 18, 24, 0.95)';
+                header.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.3)';
+            } else {
+                header.style.backgroundColor = 'rgba(15, 18, 24, 0.9)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
+            }
+        });
+
+        // Dynamic year in footer copyright
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearElement = document.querySelector('.footer-text');
+            if (yearElement) {
+                const year = new Date().getFullYear();
+                yearElement.textContent = ` ${year} Shahed Adnan. Portfolio Website.`;
+            }
+        });
+    </script>
+</body>
+</html>
