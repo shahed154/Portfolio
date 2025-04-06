@@ -2,9 +2,9 @@
 
 :root {
     --primary-color: #03001C;
-    --secondary-color: #4635c7;
-    --accent-color: #4635c7;
-    --text-color: #d5cbcb;
+    --secondary-color: #1640D6;
+    --accent-color: #001B79;
+    --text-color: #dae0d7;
     --bg-color: #0f1218;
     --card-bg: #1c2026;
     --transition: all 0.3s ease-in-out;
@@ -14,7 +14,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Verdana  ;
+    font-family: Verdana;
 }
 
 html {
@@ -281,7 +281,7 @@ p {
 }
 
 .project-tag {
-    background-color: rgba(52, 61, 220, 0.563);  /* Based on your new secondary color */
+    background-color: #001B79;  /* Based on your new secondary color */
     color: #EEEEEE;  /* Using your text color for better contrast */
     padding: 0.3rem 0.8rem;
     border-radius: 50px;
@@ -292,7 +292,7 @@ p {
 }
 
 .project-tag:hover {
-    background-color: rgba(38, 31, 179, 0.25);  /* Darker on hover */
+    background-color: #1640D6;  /* Darker on hover */
     transform: translateY(-1px);
 }
 
@@ -339,6 +339,7 @@ p {
 }
 
 .resume-section h3 {
+    color: var(--secondary-color);
     border-bottom: 2px solid var(--secondary-color);
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
@@ -710,7 +711,6 @@ details[open] summary::after {
 .code-panel.active {
     display: block;
 }
-Last edited 1 minute ago
 
 
 /* Responsive Design */
@@ -793,4 +793,23 @@ Last edited 1 minute ago
     color: var(--secondary-color);
     margin-bottom: 1.5rem;
     text-align: center;
+}
+.contact-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-link:hover {
+    color: var(--secondary-color);
+    transform: translateY(-3px);
 }

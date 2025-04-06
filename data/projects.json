@@ -1,0 +1,165 @@
+{
+  "gameProjects": [
+    {
+      "id": "cops-zombies",
+      "title": "Cops N' Zombies",
+      "image": "assets/CopsNZombies.png",
+      "description": "A multiplayer horror social deduction game where one player is secretly a zombie. Developing alone and working towards shipping on Steam.",
+      "tags": [
+        "Unreal Engine",
+        "C++",
+        "Networking",
+        "Blueprints",
+        "SteamSDK",
+        "AdvancedLocomotionSystem"
+      ],
+      "links": [
+        {
+          "text": "View on Steam",
+          "url": "https://store.steampowered.com/app/2066000/Cops_N_Zombies/",
+          "type": "demo"
+        }
+      ],
+      "details": {
+        "overview": "Goal is to develop a high quality shipped game to release on steam. Developed and expanded most features alone and by putting together different tutorials, used frameworks such as AdvancedLocomotionSystem and used marketplace art assets",
+        "features": [
+          "Multiplayer support and Steam integration",
+          "FPS weapon system",
+          "Interaction system",
+          "Flashlight system",
+          "Melee Combat system",
+          "Health, Stamina, Status Effects",
+          "Proximity voice chat"
+        ],
+        "gallery": [
+          {
+            "image": "assets/droppingGun.gif",
+            "caption": "Weapon System"
+          },
+          {
+            "image": "assets/gunPickUp.png",
+            "caption": "Gun pick up interaction"
+          },
+          {
+            "image": "assets/shooting.gif",
+            "caption": "Weapon shooting"
+          },
+          {
+            "image": "assets/mainmenu.png",
+            "caption": "Main Menu of the game"
+          }
+        ]
+      }
+    },
+    {
+      "id": "party-game",
+      "title": "Fighting/Party Mini Game",
+      "image": "assets/fighting.gif",
+      "description": "Multiplayer fighting party game where players control muscular animals in different minigames.",
+      "tags": [
+        "Unreal Engine",
+        "Blueprint",
+        "Multiplayer",
+        "Prototype"
+      ],
+      "links": [],
+      "details": {
+        "overview": "A game prototype I worked on where you use different funny muscular animal characters and fight other players boxing style while also playing different mini games. Decided to finish work on Cops n Zombies instead.",
+        "features": [
+          "Robust fighting system",
+          "Multiplayer support",
+          "Stylized anime shader"
+        ],
+        "gallery": [
+          {
+            "image": "assets/3manfight.png",
+            "caption": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "survival-game",
+      "title": "Survival Game",
+      "image": "assets/fightingAI.gif",
+      "description": "A classic multiplayer co-op survival game with AI, building, combat and inventory. Was very out of scope but learned a lot.",
+      "tags": [
+        "Unreal Engine",
+        "C++",
+        "Blueprints",
+        "Prototype"
+      ],
+      "links": [],
+      "details": {
+        "overview": "Used a mix of C++ and blueprints while also following tutorials to learn how to develop each system in multiplayer. Integrated a premade building system asset and random art assets for prototyping",
+        "features": [
+          "Survival mechanics: health, hunger, thirst, and stamina",
+          "Resource gathering and destructible environments",
+          "Inventory and Crafting system",
+          "Melee and ranged weapon systems with various weapons",
+          "Various AI behaviors including roaming, patrolling, and boss encounters",
+          "Weather and day/night cycle"
+        ],
+        "gallery": [
+          {
+            "image": "assets/BuildingSystem.gif",
+            "caption": "Building system"
+          },
+          {
+            "image": "assets/punchTrees.gif",
+            "caption": "Gathering Resource and Destructable tree"
+          },
+          {
+            "image": "assets/weaponswitch.gif",
+            "caption": "Weapon Switching"
+          }
+        ]
+      }
+    }
+  ],
+  
+  "webProjects": [
+    {
+      "id": "pokemon-battle",
+      "title": "Pokemon Battle Simulator",
+      "image": "assets/poke.png",
+      "description": "A Pokemon Battle Simulator using PokeAPI where players can roll random Pokemon and moves, then battle against a computer opponent to see whose move is more powerful.",
+      "tags": [
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Axios"
+      ],
+      "links": [
+        {
+          "text": "Live Demo",
+          "url": "https://shahed154.github.io/SBA308A/",
+          "type": "demo"
+        },
+        {
+          "text": "View Code",
+          "url": "https://github.com/shahed154/SBA308A",
+          "type": "code"
+        }
+      ],
+      "details": {
+        "overview": "A simple Pokemon Battle Simulator built with JavaScript that uses the PokeAPI to fetch random Pokemon and their moves. Players can roll random Pokemon and moves, then battle against a computer opponent to see whose move is more powerful.",
+        "features": [
+          "Random Pokemon and move selection",
+          "API integration with PokeAPI",
+          "Battle system based on move power",
+          "Interactive battle log with animations",
+          "Modular JavaScript with ES6 modules",
+          "Asynchronous JavaScript (async/await, Promises)"
+        ],
+        "howToPlay": [
+          "Click \"Roll Pokemon\" to get a random Pokemon",
+          "When you have a Pokemon, click \"Roll Move\" to get a random attack",
+          "When you have the Pokemon and move you like, click \"Start Battle\" to battle",
+          "View the battle results in the battle log",
+          "Click \"Reset Game\" to start over"
+        ]
+      }
+    }
+  ]
+}

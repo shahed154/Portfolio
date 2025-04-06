@@ -22,8 +22,8 @@ let bgInitialized = false;       // Whether background animation has been initia
 let heroAnimationActive = false; // Whether hero animation is currently running
 
 // Particle system configuration
-const particlesCount = 1500;     // Number of particles in the sphere
-const starsCount = 1500;         // Number of background stars
+const particlesCount = 1000;     // Number of particles in the sphere
+const starsCount = 1000;         // Number of background stars
 const particlesGeometry = new THREE.BufferGeometry();  // Geometry for particle sphere
 const starsGeometry = new THREE.BufferGeometry();      // Geometry for background stars
 
@@ -33,7 +33,7 @@ const colors = new Float32Array(particlesCount * 3);     // RGB colors for parti
 const starsPositions = new Float32Array(starsCount * 3); // XYZ positions for stars
 
 // Animation settings
-const rotationSpeed = 0.0005;    // Base rotation speed for particle sphere
+const rotationSpeed = 0.001;    // Base rotation speed for particle sphere
 const defaultStarSpeed = 0.15;   // Default downward speed for background stars
 
 // Mouse interaction
