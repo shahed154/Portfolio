@@ -1,4 +1,4 @@
-/* Main styles for the portfolio */
+/* ===== main COLORS ===== */
 
 :root {
     --primary-color: #03001C;
@@ -9,6 +9,7 @@
     --card-bg: #1c2026;
     --transition: all 0.3s ease-in-out;
 }
+
 
 * {
     margin: 0;
@@ -28,7 +29,73 @@ body {
     overflow-x: hidden;
 }
 
-/* Header and Navigation */
+/* text */
+section {
+    min-height: 100vh;
+    padding: 8rem 2rem 4rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+h1, h2, h3 {
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+.section-subtitle {
+    font-size: 1.75rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* ALL Buttons */
+.btn {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== HEADER and NAV Bar  ===== */
+
 header {
     position: fixed;
     top: 0;
@@ -94,63 +161,8 @@ nav {
     width: 100%;
 }
 
-/* General section styling */
-section {
-    min-height: 100vh;
-    padding: 8rem 2rem 4rem;
-}
+/* ===== home SECTION ===== */
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-h1, h2, h3 {
-    margin-bottom: 1.5rem;
-}
-
-h1 {
-    font-size: 3rem;
-    font-weight: 700;
-}
-
-h2 {
-    font-size: 2.5rem;
-    color: var(--secondary-color);
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-h3 {
-    font-size: 1.5rem;
-    color: var(--accent-color);
-}
-
-p {
-    margin-bottom: 1.5rem;
-}
-
-.btn {
-    display: inline-block;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    padding: 0.8rem 1.5rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: var(--transition);
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.btn:hover {
-    background-color: var(--accent-color);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Hero Section */
 #hero {
     display: flex;
     flex-direction: column;
@@ -167,6 +179,8 @@ p {
     max-width: 800px;
 }
 
+/* Profile image  maybe add later */
+
 .hero-img {
     width: 150px;
     height: 150px;
@@ -177,6 +191,7 @@ p {
     box-shadow: 0 0 20px rgba(60, 145, 230, 0.5);
 }
 
+/* Gradient my name */
 .hero-title {
     font-size: 3.5rem;
     margin-bottom: 1rem;
@@ -197,6 +212,8 @@ p {
     margin: 0 auto 2rem;
 }
 
+/* Social media animation */
+
 .social-links {
     display: flex;
     justify-content: center;
@@ -215,7 +232,8 @@ p {
     transform: translateY(-3px);
 }
 
-/* Canvas Background */
+/* Three.js  container */
+
 #canvas-bg {
     position: absolute;
     top: 0;
@@ -225,7 +243,8 @@ p {
     z-index: 0;
 }
 
-/* Projects Section */
+/* ===== PROJECTS SECTION ===== */
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -233,6 +252,7 @@ p {
     margin-top: 3rem;
 }
 
+/* Project cards*/
 .project-card {
     background-color: var(--card-bg);
     border-radius: 10px;
@@ -273,6 +293,7 @@ p {
     flex: 1;
 }
 
+/* Tags showing skills used html css etc */
 .project-tags {
     display: flex;
     flex-wrap: wrap;
@@ -281,20 +302,21 @@ p {
 }
 
 .project-tag {
-    background-color: #001B79;  /* Based on your new secondary color */
-    color: #EEEEEE;  /* Using your text color for better contrast */
+    background-color: #001B79;
+    color: #EEEEEE;
     padding: 0.3rem 0.8rem;
     border-radius: 50px;
     font-size: 0.8rem;
-    border: 1px solid rgba(38, 31, 179, 0.3);  /* Adding a subtle border */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Adding slight depth */
+    border: 1px solid rgba(38, 31, 179, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
 }
 
 .project-tag:hover {
-    background-color: #1640D6;  /* Darker on hover */
+    background-color: #1640D6;
     transform: translateY(-1px);
 }
+
 
 .project-links {
     display: flex;
@@ -327,7 +349,42 @@ p {
     border-color: var(--accent-color);
 }
 
-/* Resume Section */
+
+.project-details {
+    width: 100%;
+    margin-top: 1rem;
+    background-color: transparent;
+    border-radius: 5px;
+    box-shadow: none;
+    border-top: 1px solid rgba(60, 145, 230, 0.1);
+}
+
+.project-details summary {
+    padding: 0.75rem 0;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-details summary::after {
+    margin-left: 0.5rem;
+    position: relative;
+    right: auto;
+}
+
+.project-details .details-content {
+    padding: 0.75rem 0.5rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+/* ===== RESUME===== */
+
 .resume-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -344,6 +401,7 @@ p {
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
 }
+
 
 .resume-item {
     margin-bottom: 1.5rem;
@@ -366,6 +424,7 @@ p {
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
 }
+
 
 .resume-skills {
     display: flex;
@@ -393,90 +452,10 @@ p {
     margin-top: 2rem;
 }
 
-/* Contact Section */
-.contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-}
 
-.contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
+/* ===== CODE SAMPLES  ===== */
 
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
 
-.contact-icon {
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.form-label {
-    font-weight: 500;
-}
-
-.form-control {
-    padding: 0.8rem;
-    border-radius: 5px;
-    border: none;
-    background-color: var(--card-bg);
-    color: var(--text-color);
-    font-size: 1rem;
-}
-
-textarea.form-control {
-    min-height: 150px;
-    resize: vertical;
-}
-
-/* Footer */
-footer {
-    background-color: var(--primary-color);
-    text-align: center;
-    padding: 2rem;
-}
-
-.footer-text {
-    margin-bottom: 1rem;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.animate {
-    animation: fadeIn 0.8s ease-in-out forwards;
-    opacity: 0;
-}
-
-/* Code Snippet Styling */
 .code-snippet {
     background-color: #1e1e1e;
     padding: 1rem;
@@ -488,9 +467,131 @@ footer {
 
 .code-snippet pre {
     color: #d4d4d4;
+    margin: 0;
+    padding: 0;
 }
 
-/* Game Demo */
+
+.code-snippet code {
+    padding: 1rem;
+    overflow-x: auto;
+    display: block;
+    max-height: 400px;
+    overflow-y: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+
+.code-description {
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+
+.external-code-link {
+    display: inline-flex;
+    align-items: center;
+    margin: 0.5rem 0;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.external-code-link i {
+    margin-right: 0.5rem;
+}
+
+.external-code-link:hover {
+    color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+
+.code-tabs {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.code-tab {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+    background-color: rgba(15, 18, 24, 0.5);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.code-tab.active {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.code-tab:hover:not(.active) {
+    background-color: rgba(60, 145, 230, 0.2);
+}
+
+.code-panel {
+    display: none;
+}
+
+.code-panel.active {
+    display: block;
+}
+
+/* ===== GAME sECTIONS ===== */
+
+.game-feature {
+    background-color: rgba(15, 18, 24, 0.5);
+    border-radius: 5px;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.feature-title {
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 0.3rem;
+}
+
+/*screenshots */
+.game-demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.gallery-item {
+    height: 180px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-item img,
+.gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.4rem;
+    font-size: 0.75rem;
+}
+
+
 .game-demo {
     width: 100%;
     height: 400px;
@@ -528,6 +629,8 @@ footer {
     transform: scale(1.05);
 }
 
+/* ===== COLLAPSIBLE S ===== */
+
 details {
     background-color: var(--card-bg);
     border-radius: 8px;
@@ -553,15 +656,15 @@ summary:hover {
     background-color: rgba(60, 145, 230, 0.1);
 }
 
+/* Animated chevron for dropdowns */
 summary::after {
     content: '\f078';
     font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
+
     position: absolute;
     right: 1rem;
     transform: rotate(0);
-    transition: transform 0.3s ease;
-    font-size: 0.8rem;
+  
 }
 
 details[open] summary::after {
@@ -572,104 +675,7 @@ details[open] summary::after {
     padding: 1rem;
 }
 
-/* Code snippets with scrolling */
-.code-snippet {
-    background-color: #1e1e1e;
-    border-radius: 5px;
-    overflow: hidden;
-    margin-bottom: 1rem;
-}
-
-.code-snippet pre {
-    margin: 0;
-    padding: 0;
-}
-
-.code-snippet code {
-    padding: 1rem;
-    overflow-x: auto;
-    display: block;
-    max-height: 400px; /* Make code boxes scrollable after 400px height */
-    overflow-y: auto;
-    font-size: 0.85rem;
-    line-height: 1.5;
-}
-
-/* Code description text */
-.code-description {
-    margin-bottom: 0.75rem;
-    font-size: 0.9rem;
-    line-height: 1.4;
-}
-
-/* External code links */
-.external-code-link {
-    display: inline-flex;
-    align-items: center;
-    margin: 0.5rem 0;
-    color: var(--secondary-color);
-    text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
-}
-
-.external-code-link i {
-    margin-right: 0.5rem;
-}
-
-.external-code-link:hover {
-    color: var(--accent-color);
-    transform: translateY(-2px);
-}
-
-/* Game demo sections */
-.game-feature {
-    background-color: rgba(15, 18, 24, 0.5);
-    border-radius: 5px;
-    padding: 0.75rem;
-    margin-bottom: 0.75rem;
-}
-
-.feature-title {
-    font-weight: 600;
-    color: var(--secondary-color);
-    margin-bottom: 0.3rem;
-}
-
-.game-demo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 0.75rem;
-    margin-top: 0.75rem;
-}
-
-.gallery-item {
-    height: 180px;
-    border-radius: 5px;
-    overflow: hidden;
-    position: relative;
-}
-
-.gallery-item img,
-.gallery-item video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.gallery-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 0.4rem;
-    font-size: 0.75rem;
-}
-
-/* Space-saving lists in dropdowns */
+/*lists  */
 .details-content ul {
     padding-left: 1.5rem;
     margin: 0.5rem 0;
@@ -679,121 +685,65 @@ details[open] summary::after {
     margin-bottom: 0.25rem;
 }
 
-/* Compact tabs for multi-file code examples */
-.code-tabs {
+/* =====  CONTACT SECTION ===== */
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.contact-info {
     display: flex;
-    gap: 0.25rem;
-    margin-bottom: 0.5rem;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.code-tab {
-    padding: 0.4rem 0.75rem;
-    font-size: 0.8rem;
-    background-color: rgba(15, 18, 24, 0.5);
-    border-radius: 3px;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.code-tab.active {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-}
-
-.code-tab:hover:not(.active) {
-    background-color: rgba(60, 145, 230, 0.2);
-}
-
-.code-panel {
-    display: none;
-}
-
-.code-panel.active {
-    display: block;
-}
-
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    nav {
-        padding: 0 1rem;
-    }
-
-    .nav-links li {
-        margin-left: 1rem;
-    }
-
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    h2 {
-        font-size: 2rem;
-    }
-
-    .resume-container {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    section {
-        padding: 7rem 1rem 3rem;
-    }
-
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .project-card {
-        min-width: 100%;
-    }
-}
-
-/* Project details dropdown styling */
-.project-details {
-    width: 100%;
-    margin-top: 1rem;
-    background-color: transparent;
-    border-radius: 5px;
-    box-shadow: none;
-    border-top: 1px solid rgba(60, 145, 230, 0.1);
-}
-
-.project-details summary {
-    padding: 0.75rem 0;
-    font-size: 0.9rem;
-    color: var(--secondary-color);
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+.contact-item {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 1rem;
 }
 
-.project-details summary::after {
-    margin-left: 0.5rem;
-    position: relative;
-    right: auto;
-}
-
-.project-details .details-content {
-    padding: 0.75rem 0.5rem;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-}
-
-.section-subtitle {
-    font-size: 1.75rem;
+.contact-icon {
+    font-size: 1.5rem;
     color: var(--secondary-color);
-    margin-bottom: 1.5rem;
-    text-align: center;
 }
+
+
+
+/* Contact form */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+.form-control {
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
 .contact-links {
     display: flex;
     gap: 1.5rem;
@@ -812,4 +762,80 @@ details[open] summary::after {
 .contact-link:hover {
     color: var(--secondary-color);
     transform: translateY(-3px);
+}
+
+
+
+/* ===== FOOTER  ===== */
+footer {
+    background-color: var(--primary-color);
+    text-align: center;
+    padding: 2rem;
+}
+
+.footer-text {
+    margin-bottom: 1rem;
+}
+
+/* ===== ANIMATIONS ===== */
+
+/* Fade in*/
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate {
+    animation: fadeIn 0.8s ease-in-out forwards;
+    opacity: 0;
+}
+
+/* ===== RESPONSIVE  ===== */
+
+@media (max-width: 768px) {
+    nav {
+        padding: 0 1rem;
+    }
+
+    .nav-links li {
+        margin-left: 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    /* Stacking */
+    .resume-container {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*  smol screens */
+@media (max-width: 480px) {
+    section {
+        padding: 7rem 1rem 3rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .project-card {
+        min-width: 100%;
+    }
 }
