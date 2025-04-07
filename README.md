@@ -1,3 +1,3 @@
 # Shahed Website
-portfolio 
+portfolio showcasing game and web development projects
 
