@@ -54,7 +54,7 @@
     {
       "id": "party-game",
       "title": "Fighting/Party Mini Game",
-      "image": "assets/fighting.gif",
+      "image": "assets/Fighting.gif",
       "description": "Multiplayer fighting party game where players control muscular animals in different minigames.",
       "tags": [
         "Unreal Engine",
