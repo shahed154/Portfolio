@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     hljs.highlightAll();
     
   } catch (error) {
-    console.error('Failed to initialize portfolio:', error);
+    console.error('Failed to load portfolio:', error);
   }
 });
 
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function loadProjects() {
   try {
     const response = await fetch('data/projects.json');
-    if (!response.ok) throw new Error('Failed to load projects data');
+    if (!response.ok) throw new Error('Faild to load projects data');
     portfolioData.projects = await response.json();
   } catch (error) {
     console.error('Error loading projects:', error);
@@ -48,8 +48,8 @@ async function loadCodeSnippets() {
     if (!response.ok) throw new Error('Failed to load code snippets data');
     portfolioData.codeSnippets = await response.json();
   } catch (error) {
-    console.error('Error loading code snippets:', error);
-    document.querySelector('#code .container').innerHTML = '<p class="error">Failed to load code snippets. Please refresh the page or try again later.</p>';
+    console.error('Error loading code snippetd:', error);
+    document.querySelector('#code .container').innerHTML = '<p class="error">Failed to load code snippets. please refresh the page or try again later.</p>';
   }
 }
 

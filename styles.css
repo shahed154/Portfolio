@@ -1,6 +1,8 @@
 /* ===== main COLORS ===== */
 
 :root {
+
+    
     --primary-color: #03001C;
     --secondary-color: #1640D6;
     --accent-color: #001B79;
@@ -815,7 +817,7 @@ footer {
         font-size: 2rem;
     }
 
-    /* Stacking */
+    /* Stackz */
     .resume-container {
         grid-template-columns: 1fr;
     }

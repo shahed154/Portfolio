@@ -103,7 +103,7 @@ function initHeroSphere() {
     
     const heroSection = document.getElementById('hero');
     if (!heroSection) {
-        console.warn('Hero section not found. Hero animation will not be initialized.');
+        console.warn('Hero section not found.');
         return;
     }
     
@@ -303,6 +303,6 @@ window.addEventListener('load', function() {
     if (typeof THREE !== 'undefined') {
         initAnimations();
     } else {
-        console.warn('Three.js library not loaded. Please make sure it is included in your HTML.');
+        console.warn('Three.js library not loadedd');
     }
 });
