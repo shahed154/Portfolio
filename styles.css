@@ -34,17 +34,17 @@ body {
 /* text */
 section {
     min-height: 100vh;
-    padding: 8rem 2rem 4rem;
+    padding: 4px;
 }
 
 .container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin:  auto;
 }
 
 
 h1, h2, h3 {
-    margin-bottom: 1.5rem;
+    margin: 2px;
 }
 
 h1 {
@@ -65,7 +65,7 @@ h3 {
 }
 
 p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .section-subtitle {
@@ -80,29 +80,30 @@ p {
     display: inline-block;
     background-color: var(--secondary-color);
     color: var(--text-color);
-    padding: 0.8rem 1.5rem;
-    border-radius: 50px;
+    padding: 1rem 1.5rem;
+    border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition);
-    border: none;
+  
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ 
 }
 
 .btn:hover {
     background-color: var(--accent-color);
     transform: translateY(-3px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+
 }
 
 /* ===== HEADER and NAV Bar  ===== */
 
 header {
+    
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(15, 18, 24, 0.9);
+    background-color: rgba(15, 18, 24, 0.8);
     backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 1rem 0;
@@ -112,7 +113,7 @@ header {
 
 nav {
     max-width: 1200px;
-    margin: 0 auto;
+  
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -120,12 +121,18 @@ nav {
 }
 
 .logo {
+    
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--secondary-color);
     text-decoration: none;
 }
+.logo:hover {
 
+
+    transform: translateY(-3px);
+
+}
 .nav-links {
     display: flex;
     list-style: none;
