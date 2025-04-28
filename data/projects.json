@@ -160,6 +160,38 @@
           "Click \"Reset Game\" to start over"
         ]
       }
+    },
+    {
+      "id": "card-collection-api",
+      "title": "Card Collection API",
+      "image": "assets/card-collection.png",
+      "description": "A CRUD API for managing users, cards, and card collections using MongoDB and Express.js. Featuring user management, diverse cards, and a card collection.",
+      "tags": [
+        "JavaScript",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Mongoose",
+        "RESTful API"
+      ],
+      "links": [
+        {
+          "text": "View Code",
+          "url": "https://github.com/shahed154/SBA319",
+          "type": "code"
+        }
+      ],
+      "details": {
+        "overview": "This is a basic backend API that simulates a Pokemon-style card collection system. Users can create and edit accounts, add cards with different attributes (type, HP, attack), and manage a collection. ",
+        "features": [
+          "CRUD operations for users, cards, and collections",
+          "RESTful API architecture",
+          "MongoDB database with Mongoose",
+          "Data validation,R elationship modeling",
+          "Mongoose Schemas"
+        
+        ]
+      }
     }
   ]
 }
