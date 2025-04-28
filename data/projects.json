@@ -165,7 +165,7 @@
       "id": "card-collection-api",
       "title": "Card Collection API",
       "image": "assets/card-collection.png",
-      "description": "A CRUD API for managing users, cards, and card collections using MongoDB and Express.js. Featuring user management, diverse cards, and a card collection.",
+      "description": "A CRUD API for managing users, cards, and card collections using MongoDB and Express.js. Featuring user management, diverse card Schemas, and a card collection.",
       "tags": [
         "JavaScript",
         "Node.js",
@@ -187,7 +187,7 @@
           "CRUD operations for users, cards, and collections",
           "RESTful API architecture",
           "MongoDB database with Mongoose",
-          "Data validation,R elationship modeling",
+          "Data validation,Relationship modeling",
           "Mongoose Schemas"
         
         ]
