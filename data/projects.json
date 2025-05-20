@@ -117,8 +117,57 @@
       }
     }
   ],
-  
-  "webProjects": [
+ "webProjects": [
+  {
+    "id": "game-browser",
+    "title": "Full Stack Game Browser App",
+    "image": "assets/gamebrowser.png",
+    "description": "Full stack application made in 1 week. Uses the full MERN stack, outsourced RAWG API, and a custom CRUD API with RESTful endpoints. It is a game browser library where users create accounts, store their liked or dislike games. Also has a tinder style swipe page where they can swipe through games.",
+    "tags": [
+      "React",
+      "MongoDB",
+      "Express",
+      "NodeJS",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Axios",
+      "REST API"
+    ],
+    "links": [
+      {
+        "text": "Live Demo",
+        "url": "https://gamebrowserapp-1.onrender.com/",
+        "type": "demo"
+      },
+      {
+        "text": "View Code",
+        "url": "https://github.com/shahed154/GameBrowserApp",
+        "type": "code"
+      }
+    ],
+    "details": {
+      "overview": "A full-stack game discovery application built with the MERN stack (MongoDB, Express, React, Node.js). It integrates with the RAWG video games API to provide users with trending games and allows them to create accounts to save their preferences. Includes a Tinder-style swiping mechanism for discovering new games quickly in a fun way.",
+      "features": [
+        "User authentication system with account creation and login",
+        "Game browsing with detailed game information and screenshots",
+        "Like/dislike functionality to save game preferences",
+        "Interactive swipe interface for quick game discovery",
+        "User profile page to view and manage liked games",
+        "Responsive design for mobile and desktop use",
+        "Custom CRUD API with MongoDB database integration",
+        "RESTful API endpoints for all user and game interactions"
+      ],
+      "technologies": [
+        "Frontend: React, React Router, Context API for state management",
+        "Backend: Express.js, Node.js, MongoDB with Mongoose",
+        "External API: RAWG Video Games Database API",
+        "Authentication: Custom user authentication system",
+        "Styling: Custom CSS with responsive design",
+        "Deployment: Render for both frontend and backend services"
+      ]
+    }
+  },
     {
       "id": "pokemon-battle",
       "title": "Pokemon Battle Simulator",
