@@ -122,7 +122,7 @@
     "id": "game-browser",
     "title": "Full Stack Game Browser App",
     "image": "assets/gamebrowser.png",
-    "description": "Full stack application made in 1 week. Uses the full MERN stack, outsourced RAWG API, and a custom CRUD API with RESTful endpoints. It is a game browser library where users create accounts, store their liked or dislike games. Also has a tinder style swipe page where they can swipe through games.",
+    "description": "Full stack application made in 1 week. Uses the full MERN stack, outsourced RAWG API, and a custom CRUD API. It is a game browser library where users create accounts, store their favorite games or dislike games. Also has a tinder style swipe page where they can swipe through games.",
     "tags": [
       "React",
       "MongoDB",
@@ -147,24 +147,20 @@
       }
     ],
     "details": {
-      "overview": "A full-stack game discovery application built with the MERN stack (MongoDB, Express, React, Node.js). It integrates with the RAWG video games API to provide users with trending games and allows them to create accounts to save their preferences. Includes a Tinder-style swiping mechanism for discovering new games quickly in a fun way.",
+      "overview": "A full-stack game discovery application built with the MERN stack (MongoDB, Express, React, Node.js). The app integrates with the RAWG video games API to provide users with trending games and allows them to create accounts to save their preferences. The interface includes a Tinder-style swiping mechanism for discovering new games quickly.",
       "features": [
-        "User authentication system with account creation and login",
-        "Game browsing with detailed game information and screenshots",
-        "Like/dislike functionality to save game preferences",
+        "React frontend with Context API for global state management",
+        "Express and Node.js backend with RESTful API architecture",
+        "MongoDB database using Mongoose for data modeling",
+        "User authentication system for account creation and login",
+        "Integration with RAWG API to fetch trending games and details",
         "Interactive swipe interface for quick game discovery",
+        "Like/dislike functionality with persistent storage",
         "User profile page to view and manage liked games",
-        "Responsive design for mobile and desktop use",
-        "Custom CRUD API with MongoDB database integration",
-        "RESTful API endpoints for all user and game interactions"
-      ],
-      "technologies": [
-        "Frontend: React, React Router, Context API for state management",
-        "Backend: Express.js, Node.js, MongoDB with Mongoose",
-        "External API: RAWG Video Games Database API",
-        "Authentication: Custom user authentication system",
-        "Styling: Custom CSS with responsive design",
-        "Deployment: Render for both frontend and backend services"
+        "Responsive design using custom CSS",
+        "Axios for HTTP requests between frontend, backend and external API",
+        "React Router for seamless navigation between views",
+        "Full deployment on Render hosting platform"
       ]
     }
   },
