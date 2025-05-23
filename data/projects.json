@@ -164,6 +164,36 @@
       ]
     }
   },
+  
+ {
+  "id": "stock-app",
+  "title": "Stock Indicator Checker",
+  "image": "assets/financialapp.png",
+  "description": "Made for a client, this site uses twelvedata API and the npm technicalindicators to do an analysis of the stock given and see market conditions. Made using simple HTML and CSS and TypeScript",
+  "tags": [
+    "HTML",
+    "TypeScript",
+    "JavaScript",
+    "NodeJS",
+    "CSS"
+  ],
+  "links": [
+  
+  ],
+  "details": {
+    "overview": "A professional stock market analysis application built with TypeScript, HTML, and CSS. The platform integrates with the TwelveData API to fetch real-time stock data and utilizes the technicalindicators npm package to perform comprehensive technical analysis. Features a clean, responsive interface with dual viewing modes and supports multiple technical indicators including RSI, MACD, Bollinger Bands, and more. Designed for traders and investors who need quick, reliable market analysis with automated refresh capabilities.",
+    "features": [
+      "Real-time stock data integration via TwelveData API",
+      "12+ technical indicators including RSI, MACD, SMA, VWAP, Bollinger Bands, Stochastic, ATR, Williams %R, CCI, OBV, ADX, and MFI",
+      "Dual viewing modes: responsive data table and interactive card layout",
+      "Batch API processing to efficiently handle multiple stock symbols",
+      "Auto-refresh functionality with countdown timer",
+      "Customizable indicator selection with momentum, trend, and volatility presets",
+      "Local storage for watchlist persistence and user preferences",
+      "TypeScript architecture with modular class-based organization"
+    ]
+  }
+},
     {
       "id": "pokemon-battle",
       "title": "Pokemon Battle Simulator",
